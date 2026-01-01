@@ -35,6 +35,15 @@
             uv
             python312
           ];
+          shellHook = ''
+            if [ ! -d ".venv" ]; then
+              echo "Creating Python virtual environment with uv..."
+              uv venv
+            fi
+
+            # activate python venv automatically
+            source .venv/bin/activate
+          '';
         };
       }
     );
